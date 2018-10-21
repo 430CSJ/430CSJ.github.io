@@ -5,30 +5,30 @@ date:   2018-10-21 17:33:27 +0000
 image: /assets/images/ZKWatchProcedure.png
 
 ---
-### Zookeeper
+## Zookeeper
 * 是一个开源的分布式应用程序协调服务，由雅虎创建，是Google的Chubby的一个开源实现，是Hadoop和Hbase的重要组件。
 * 是一个为分布式应用提供一致性的软件，提供的服务包括：配置维护、域名服务、分布式同步、组服务等。
 * 目标是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。
 * 是一个高可用的分布式数据管理与协调框架。基于对ZAB算法的实现，该框架能够很好地保证分布式环境中数据的一致性。基于这样的特性，ZooKeeper成为了解决分布式一致性问题的利器。
 
 
-### Zookeeper的watch机制
+## Zookeeper的watch机制
 * ZooKeeper节点Znode发生变化（Znode本身的增加，删除，修改，以及子Znode的变化）可通过Watch机制通知到客户端。要实现Watch，就必须实现org.apache.zookeeper.Watcher接口，并将实现类的对象传入到可以Watch的方法中。
 * Zookeeper中所有读操作（getData()，getChildren()，exists()）都可设置Watch选项。如果需要Watcher，可自定义Watcher，如果是Boolean型变量，当为true时，则使用系统默认的Watcher，系统默认的Watcher是在Zookeeper的构造函数中定义的Watcher。参数中Watcher为空或者false，表示不启用Wather。
 * Watch事件具有one-time trigger（一次性触发）的特性，如果Watch监视的Znode有变化，那么就会通知设置该Watch的客户端。
 
-#### Zookeeper Watch
-##### 一次性触发
+### Zookeeper Watch
+#### 一次性触发
 客户端在Znode设置了Watch时，如果Znode内容发生改变，那么客户端就会获得Watch事件。但该Znode再次发生变化，客户端是无法收到Watch事件的，除非客户端设置了新的Watch。
-##### 发送至客户端
+#### 发送至客户端
 * Watch事件是异步发送到Client的。Zookeeper可保证客户端发送过去的更新顺序是有序的。
 * 使用Zookeeper不能期望能够监控到节点每次的变化。Zookeeper只能保证最终的一致性，而无法保证强一致性。如果某个Znode设置了Watcher，且在Znode有变化的情况下通知到了客户端，但在客户端接收到这个变化事件而还没有再次设置Watcher之前，如果其他客户端对该Znode做了修改，Znode第二次的变化客户端是无法收到通知的。这可能是由于网络延迟或是其他因素导致。
-##### 设置watch的数据内容
+#### 设置watch的数据内容
 * Zookeeper维护了两个Watch列表，一个节点数据Watch列表，另一个是子节点Watch列表。
 * getData()和exists()设置数据Watch，返回节点的内容。getChildren()设置子节点Watch，返回子节点列表。
 * setData()触发内容Watch，create()触发当前节点的内容Watch或者是其父节点的子节点Watch。delete()同时触发父节点的子节点Watch和内容Watch，以及子节点的内容Watch。
 
-#### Zookeeper Watcher运行机制
+### Zookeeper Watcher运行机制
 * Watch是轻量级的，就是本地JVM的Callback，服务器端只存了是否有设置了Watcher的布尔类型。
 * 在服务端，在FinalRequestProcessor处理对应的Znode操作时，会根据客户端传递的watcher变量，添加到对应的ZKDatabase中进行持久化存储，同时将自己NIOServerCnxn作为一个Watcher callback，监听服务端事件变化。
 * Leader通过投票通过了某次Znode变化的请求后，通知对应的Follower，Follower根据自己内存中的ZKDataBase信息，发送notification信息给Zookeeper客户端。
@@ -36,22 +36,22 @@ image: /assets/images/ZKWatchProcedure.png
 ![Zookeeper Watch Procedure][ZKWatchProcedure]
 
 
-### Zookeeper的一致性算法
+## Zookeeper的一致性算法
 electionEpoch：每执行一次leader选举，electionEpoch就会自增，用来标记leader选举的轮次
 peerEpoch：每次leader选举完成之后，都会选举出一个新的peerEpoch，用来标记事务请求所属的轮次
 zxid：事务请求的唯一标记，由leader服务器负责进行分配。由2部分构成，高32位是peerEpoch，低32位是请求的计数，从0开始。所以由zxid就可以知道该请求是哪个轮次的，并且是该轮次的第几个请求
 lastProcessedZxid：最后一次commit的事务请求的zxid
-#### ZAB：ZooKeeper Atomic Broadcast protocol，Zookeeper原子信息广播协议
+### ZAB：ZooKeeper Atomic Broadcast protocol，Zookeeper原子信息广播协议
 分为四阶段：
 * Leader election：electionEpoch自增，在选举的时候lastProcessedZxid（最后一次commit的事务请求的zxid）越大，越有可能成为leader
 * Discovery： 
-1.leader收集follower的lastProcessedZxid，这个主要用来通过和leader的lastProcessedZxid对比来确认follower需要同步的数据范围 
+1.leader收集follower的lastProcessedZxid，这个主要用来通过和leader的lastProcessedZxid对比来确认follower需要同步的数据范围  
 2.选举出一个新的peerEpoch，主要用于防止旧的leader来进行提交操作（旧leader向follower发送命令的时候，follower发现zxid所在的peerEpoch比现在的小，则直接拒绝，防止出现不一致性）
 * Synchronization：follower中的事务日志和leader保持一致的过程，就是依据follower和leader之间的lastProcessedZxid进行，follower多的话则删除掉多余部分，follower少的话则补充，一旦对应不上则follower删除掉对不上的zxid及其之后的部分然后再从leader同步该部分之后的数据
 * Broadcast：leader针对客户端的事务请求，然后提出一个议案，发给所有的follower，一旦过半的follower回复OK的话，leader就可以将该议案进行提交了，向所有follower发送提交该议案的请求，leader同时返回OK响应给客户端
 
 
-### Zookeeper高可用
+## Zookeeper高可用
 通过选举算法和集群复制可避免单点故障，由于是文件系统，即使所有的ZooKeeper节点全部挂掉，数据也不会丢失，重启服务器之后，数据即可恢复。另外ZooKeeper的节点更新是原子的，更新不是成功就是失败。通过版本号，ZooKeeper实现了更新的乐观锁，当版本号不相符时，则表示待更新的节点已经被其他客户端提前更新了，而当前的整个更新操作将全部失败。
 
 
