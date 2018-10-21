@@ -18,12 +18,12 @@ image: /assets/images/ZKWatchProcedure.png
 * Watch事件具有one-time trigger（一次性触发）的特性，如果Watch监视的Znode有变化，那么就会通知设置该Watch的客户端。
 
 ## Zookeeper Watch
-### 一次性触发
+### 一次性触发 ###
 客户端在Znode设置了Watch时，如果Znode内容发生改变，那么客户端就会获得Watch事件。但该Znode再次发生变化，客户端是无法收到Watch事件的，除非客户端设置了新的Watch。
-### 发送至客户端
+### 发送至客户端 ###
 * Watch事件是异步发送到Client的。Zookeeper可保证客户端发送过去的更新顺序是有序的。
 * 使用Zookeeper不能期望能够监控到节点每次的变化。Zookeeper只能保证最终的一致性，而无法保证强一致性。如果某个Znode设置了Watcher，且在Znode有变化的情况下通知到了客户端，但在客户端接收到这个变化事件而还没有再次设置Watcher之前，如果其他客户端对该Znode做了修改，Znode第二次的变化客户端是无法收到通知的。这可能是由于网络延迟或是其他因素导致。
-### 设置watch的数据内容
+### 设置watch的数据内容 ###
 * Zookeeper维护了两个Watch列表，一个节点数据Watch列表，另一个是子节点Watch列表。
 * getData()和exists()设置数据Watch，返回节点的内容。getChildren()设置子节点Watch，返回子节点列表。
 * setData()触发内容Watch，create()触发当前节点的内容Watch或者是其父节点的子节点Watch。delete()同时触发父节点的子节点Watch和内容Watch，以及子节点的内容Watch。
