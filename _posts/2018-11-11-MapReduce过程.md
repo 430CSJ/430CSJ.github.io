@@ -6,7 +6,7 @@ image: /assets/images/MapReduceProcedure.png
 
 ---
 ## Hadoop中MapReduce框架组成
-[!MRFramework][MRF]
+![MRFramework][MRF]
 #### JobTracker
 负责调度构成一个作业的所有任务，这些任务分布在不同的TaskTracker上
 #### TaskTracker
@@ -14,11 +14,11 @@ image: /assets/images/MapReduceProcedure.png
 
 ## MapReduce输入输出
 把作业的输入看成是一组<key,value>键值对，同样也产生一组<key,value>键值对作为作业的输出，这两组键值对有可能是不同的  
-[!MRI&O][MRIO]
+![MRI&O][MRIO]
 
 ## MapReduce处理流程
 以单词计数为例：  
-[!MRProcedure][MRProc]  
+![MRProcedure][MRProc]  
 1.1-1.4 map  
 2.1-2.3 reduce  
 Shuffle过程见[Shuffle](https://430csj.github.io/2018/11/04/MapReduce/)
