@@ -2,8 +2,9 @@
 layout: post
 title:  "2018-11-04 MapReduce"
 date:   2018-11-04 23:15:14 +0000
-image: /assets/images/contact_d.jpg
-
+categories: Hadoop
+tags: hadoop Hadoop
+comments: 1
 ---
 ![MapReduceAxiom][MR]
 #### map task

@@ -1,254 +1,68 @@
-# Jekyll Material Theme
+# MatJek
 
-A Jekyll Theme based on [Material Design](https://material.io/) using [Materialize](http://materializecss.com/).
+A responsive [Material](https://material.io/) theme based on [Materialize.css](http://materializecss.com/) for jekyll sites.
 
-[![CircleCI](https://circleci.com/gh/jameshamann/jekyll-material-theme/tree/master.svg?style=svg)](https://circleci.com/gh/jameshamann/jekyll-material-theme/tree/master)
-[![Gem Version](https://badge.fury.io/rb/jekyll-material-theme.svg)](https://badge.fury.io/rb/jekyll-material-theme)
-[![Gem](https://img.shields.io/gem/dt/jekyll-material-theme.svg)](https://img.shields.io/gem/dt/jekyll-material-theme.svg)
+## Features
 
-
-## Examples
-
-<a href="https://imgur.com/D9DSyuk"><img src="https://i.imgur.com/D9DSyuk.gif" title="source: imgur.com" /></a>
-
-
-<a href="https://imgur.com/hlB1MOw"><img src="https://i.imgur.com/hlB1MOw.gif" title="source: imgur.com" /></a>
-
-<a href="https://imgur.com/qjhId2x"><img src="https://imgur.com/qjhId2x.gif" title="source: imgur.com" /></a>
-##### Cookie Policy
-
-If you use cookies on your site, or choose to use Google Analytics, you're able to notify visitors with this prompt. The ```Thanks!``` dialog message can be customised in your ```_config.yml``` file.
-
-<a href="https://imgur.com/O7sICnY"><img src="https://i.imgur.com/O7sICnY.gif" title="source: imgur.com" /></a>
-
-##### Tools and Experience Section
-
-If you'd like to display some of your skills and experience, you can do so through using the section below.
-
-<a href="https://imgur.com/DjtrH6s"><img src="https://imgur.com/DjtrH6s.png" title="source: imgur.com" /></a>
-
-
-### [Live Demo](https://jameshamann.com)
+* Google Analytics
+* Disqus
+* [GitHub project page](https://shawnteoh.github.io/matjek/projects/)
+* [Tags](https://shawnteoh.github.io/matjek/tags/) and [Categories](https://shawnteoh.github.io/matjek/categories/)
+* Modular CSS and JS includes ([example](https://github.com/ShawnTeoh/matjek/blob/gh-pages/projects.md/))
+* [Fancy "About" page](https://shawnteoh.github.io/matjek/about)
 
 ## Installation
 
-Add this line to your Jekyll site's `Gemfile`:
+Clone or fork this repo and edit `_config.yml` as needed.
 
-```ruby
-gem "jekyll-material-theme"
-```
+## Configuration
 
-And add this line to your Jekyll site's `_config.yml`:
+Most of the configurations can be found in `_config.yml`. The configurations listed below are specific to MatJek. If you are not using `google_tracking_id` or `disqus_shortname`, just remove them completely.
 
 ```yaml
-theme: jekyll-material-theme
+github_profile: "github_profile_url"
+user: "your_name" # Appears at sidebar
+user_email: "your_email" # Appears at sidebar, remove whole variable if unwanted
+contact_url: "google_form_link"
+google_tracking_id: "google_analytics_ID"
+disqus_shortname: "shortname_given_by_Disqus"
 ```
 
-And then execute:
+Edit the images in `assets/res` to suit your liking, but try to stick to the original resolutions.
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install jekyll-material-theme
-
-## Usage
-
-The ```_config.yml``` file has the following options.
-
-Please ensure to copy this sample before serving up your site as some variables are required in order to make the site run correctly.
+If you would like to enable comments in a post (disqus_shortname must be provided), add this line to the front matter of the post.
 
 ```yaml
-title: Your awesome title
-name: Your Name
-email: your-email@example.com
-description: Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+comments: 1
+```
 
-display_footer: inital  #change this to 'none' if you want to hide the footer copyright text
+Add tags and categories to your posts in the front matter as well. Multiple tags/categories can be assigned but need to be separated by spaces.
 
-theme: jekyll-material-theme
-
-parallax_image_one: assets/images/startup3.jpg # These are the images used for the parallax background
-parallax_image_two: assets/images/startup3.jpg
-
-# Settings for the porfolio section
-
-portfolio_heading: Portfolio
-portfolio_type: cards #cards or carousel
-
-project_one: "First Project"
-project_one_description: Describe your project!
-project_one_url: https://github.com/jameshamann/jekyll-material-theme
-project_one_icon: location_on # these are from materiailize css, the full collection is here: http://materializecss.com/icons.html
-
-project_two: Second Project
-project_two_description: Describe your project!
-project_two_url: https://github.com/jameshamann/jekyll-material-theme
-project_two_icon: photo_camera
-
-
-project_three: Third Project
-project_three_description: Describe your project!
-project_three_url: https://github.com/jameshamann/jekyll-material-theme
-project_three_icon: hotel
-
-
-project_four: Fourth Project
-project_four_description: Describe your project!
-project_four_url: https://github.com/jameshamann/jekyll-material-theme
-project_four_icon: restaurant
-
-# Skill icons from https://konpa.github.io/devicon/
-
-skills:
-  - name: amazonwebservices
-  - name: android
-  - name: angularjs
-  - name: apache
-  - name: appcelerator
-  - name: apple
-  - name: atom
-  - name: babel
-  - name: backbonejs
-  - name: bitbucket
-  - name: bootstrap
-  - name: bower
-  - name: c
-  - name: chrome
-  - name: codeigniter
-  - name: coffescript
-  - name: confluence
-  - name: cplusplus
-  - name: csharp
-  - name: css3
-  - name: cucumber
-  - name: d3js
-  - name: debian
-  - name: devicon
-  - name: django
-  - name: docker
-  - name: doctrine
-  - name: dot-net
-  - name: drupal
-  - name: erlang
-  - name: facebook
-  - name: firefox
-  - name: foundation
-  - name: gatling
-  - name: gimp
-  - name: git
-  - name: github
-  - name: gitlab
-  - name: go
-  - name: google
-  - name: gradle
-  - name: grunt
-  - name: gulp
-  - name: heroku
-  - name: html5
-  - name: ie10
-  - name: illustrator
-  - name: inkscape
-  - name: itellij
-  - name: java
-  - name: jasmine
-  - name: javascript
-  - name: laravel
-  - name: less
-  - name: linux
-  - name: meteor
-  - name: mocha
-  - name: mongodb
-  - name: moodle
-  - name: mysql
-  - name: nginx
-  - name: nodejs
-  - name: nodewebkit
-  - name: oracle
-  - name: photoshop
-  - name: php
-  - name: phpstorm
-  - name: protractor
-  - name: postgresql
-  - name: python
-  - name: pycharm
-  - name: rails
-  - name: react
-  - name: redhat
-  - name: redis
-  - name: ruby
-  - name: rubymine
-  - name: safari
-  - name: sass
-  - name: sequelize
-  - name: slack
-  - name: sourcetree
-  - name: ssh
-  - name: swift
-  - name: symfony
-  - name: tomcat
-  - name: travis
-  - name: trello
-  - name: twitter
-  - name: typescript
-  - name: ubuntu
-  - name: vim
-  - name: visualstudio
-  - name: vuejs
-  - name: webpack
-  - name: webstorm
-  - name: windows8
-  - name: wordpress
-  - name: yii
-  - name: zend
-  - name: ansible
-    uri: https://upload.wikimedia.org/wikipedia/fr/thumb/4/4b/Ansible_logo.png/220px-Ansible_logo.png # Add external icon, for internal icon use uri: /assets/my_icon.jpg
-
-icon_size: 50 # font-size of icons in px
-colored: colored # Leave blank for black and white icons
-
-project_button: Github
-
-github: https://github.com/jameshamann/jekyll-material-theme
-medium: https://medium.com
-
-baseurl: # If your site is located at /blog or /home, change it here, otherwise leave it empty
-url: http://localhost:4000/ # The URL of your site
-
-# Google tracking, if both are filled, tag manager will prevail. Set up GA through GTM in that case
-tag_manager_id: # This looks something like GTM-XXXXXXX
-google_analytics_tracking_id: # This looks something like UA-000000000-0 Head over to https://analytics.google.com/ to setup.
-
-cookie_accept_message: Thanks! # The pop-up dialog that appears after accepting the cookie notice.
-
-syntax_highlighting: true # include the css for syntax highlighting
-
-# Build settings
-markdown: kramdown
-permalink: pretty
-plugins:
-  - jekyll-feed
-  - jekyll-assets
-  - jekyll-minifier
-
+```yaml
+categories: default default2
+tags: test test2
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jameshamann/jekyll-material-theme. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcomed on GitHub at https://github.com/shawnteoh/matjek. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
-To set up your environment to develop and further customise this theme, fork the repo and explore the ```_assets``` directory, which includes all the ```css, js``` and ```font``` folders. If you're adding a feature, please add some tests in the ```spec``` directory to ensure everything works as intended.
+To set up your environment to develop this theme, clone/fork the repo and run `bundle install`.
 
-## Contributors
-
-- [James Hamann](https://github.com/jameshamann)
-- [Jam Rizzer](https://github.com/jamrizzi)
-- [Kobes](https://github.com/Kobes)
-- [fe80](https://github.com/fe80)
-## [Changelog](https://github.com/jameshamann/jekyll-material-theme/blob/master/CHANGELOG.md)
+To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000/matjek/`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The theme is available as open source under the terms of the [GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+## Libraries
+* [Materialize.css](http://materializecss.com/)
+* [GeoPattern](https://github.com/btmills/geopattern/)
+* [Animate.css](https://daneden.github.io/animate.css/)
+* [Morphtext](http://morphext.fyianlai.com/)
+
+## References
+* https://github.com/DONGChuan/Yummy-Jekyll/
+* https://github.com/codinfox/codinfox-lanyon/

@@ -2,8 +2,9 @@
 layout: post
 title:  "2018-11-11 MapReduce"
 date:   2018-11-11 23:33:33 +0000
-image: /assets/images/MapReduceProcedure.png
-
+categories: Hadoop
+tags: hadoop Hadoop
+comments: 1
 ---
 ## Hadoop中MapReduce框架组成
 ![MRFramework][MRF]
