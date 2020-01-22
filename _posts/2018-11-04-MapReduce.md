@@ -5,6 +5,7 @@ date:   2018-11-04 23:15:14 +0000
 categories: Hadoop
 tags: hadoop Hadoop
 comments: 1
+hidden: 1
 ---
 ![MapReduceAxiom][MR]
 #### map task

@@ -5,6 +5,7 @@ date:   2018-10-21 17:33:27 +0000
 categories: Hadoop
 tags: hadoop Hadoop
 comments: 1
+hidden: 1
 ---
 # Zookeeper
 * 是一个开源的分布式应用程序协调服务，由雅虎创建，是Google的Chubby的一个开源实现，是Hadoop和Hbase的重要组件。

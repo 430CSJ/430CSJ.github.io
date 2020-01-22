@@ -5,6 +5,7 @@ date:   2018-11-11 23:33:33 +0000
 categories: Hadoop
 tags: hadoop Hadoop
 comments: 1
+hidden: 1
 ---
 ## Hadoop中MapReduce框架组成
 ![MRFramework][MRF]
