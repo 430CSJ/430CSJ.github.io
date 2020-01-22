@@ -59,8 +59,10 @@ comments: 1
 登录进入桌面，先确认已连上网络。点击左下角“显示应用程序”图表，点击软件和更新。在软件和更新里，点开附加驱动选项卡，选中使用NVIDIA driver，点击应用更改，系统会自动下载并安装所选驱动。操作完成后重启，选中Ubuntu按回车进入系统，登录后应该就能正常进入桌面了。再次打开软件和更新里的附加驱动选项卡，并在终端执行`nvidia-settings`和`nvidia-smi`，以确认所选NVIDIA驱动正常工作。
 ## 安装CUDA 10.1
 在[这里](https://developer.nvidia.com/cuda-10.1-download-archive-update2?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=runfilelocal)查看如何下载并运行CUDA 10.1的runfile文件。  
-运行下载的run文件，首先在EULA页面输入accept回车，进入如下页面：![cuda inst 0][CUDA_INST_0]  
-因为之前已经安装过驱动，所以我们在高亮Driver条目时按回车，取消选中驱动，如下图所示：![cuda inst 1][CUDA_INST_1]  
+运行下载的run文件，首先在EULA页面输入accept回车，进入如下页面：  
+![cuda inst 0][CUDA_INST_0]  
+因为之前已经安装过驱动，所以我们在高亮Driver条目时按回车，取消选中驱动，如下图所示：  
+![cuda inst 1][CUDA_INST_1]  
 然后选择Install，按回车，等待安装完成。  
 安装完成后，需要配置环境变量。终端执行`sudo gedit ~/.bashrc`，在文件末尾添加如下内容：
 ```shell
