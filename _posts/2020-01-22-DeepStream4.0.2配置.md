@@ -6,9 +6,9 @@ categories: DeepStream
 tags: DeepStream Ubuntu Windows10 GStreamer TensorRT cuDNN CUDA 驱动
 comments: 1
 ---
-# DeepStream 4.0.2配置全过程
 费了不少功夫总算配置好DeepStream 4.0.2并成功运行自带Demo，记录配置过程如下。隔了几天有些细节记得不太清楚了可能与实际有出入，如果遇到问题请先尝试自行查找解决方法。  
 
+# DeepStream 4.0.2配置全过程
 ## 安装Ubuntu 18.04
 首先确认所用的电脑满足DeepStream的配置要求。按Win+R键，输入msinfo32回车，确认BIOS模式是UEFI。如电脑已预装UEFI启动模式的Windows 10，则按以下步骤安装Ubuntu18.04。如电脑未安装系统，直接百度Ubuntu 18.04安装。
 ### 准备工作
