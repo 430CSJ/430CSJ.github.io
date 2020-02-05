@@ -25,7 +25,7 @@ comments: 1
 >+ 在Windows 10下点击开始按钮，点击电源键，按住Shift键点击重启，点击选择设备，点击启动盘。
 
 >进入启动盘系统：
->+ 如果电脑是用的是核显+独显，从启动盘启动后，选中Try Ubuntu without installing，按E键，把`quiet splash`修改为`quiet splash nomodeset`，按F10进入系统。
+>+ 如果电脑是用的是核显+独显，从启动盘启动后，选中Try Ubuntu without installing，按E键，把<span style=" background-color:#e1ffff">`quiet splash`</span>修改为<span style=" background-color:#e1ffff">`quiet splash nomodeset`</span>，按F10进入系统。
 >+ 如果电脑只用独显，从启动盘启动后，选中Try Ubuntu without installing按回车进入系统。如果进系统卡住则按上面核显+独显的情况操作。
 
 为避免安装过程中因下载过慢而卡住，进入系统后，先确认已断开网络。然后打开Install Ubuntu。  
@@ -56,7 +56,7 @@ comments: 1
 + 如果电脑只用独显，从启动盘启动后，选中Ubuntu按回车进入系统。如果进系统卡住则按上面核显+独显的情况操作。  
 
 ### 改为使用NVIDIA驱动
-登录进入桌面，先确认已连上网络。点击左下角“显示应用程序”图表，点击软件和更新。在软件和更新里，点开附加驱动选项卡，选中使用NVIDIA driver，点击应用更改，系统会自动下载并安装所选驱动。操作完成后重启，选中Ubuntu按回车进入系统，登录后应该就能正常进入桌面了。再次打开软件和更新里的附加驱动选项卡，并在终端执行`nvidia-settings`和`nvidia-smi`，以确认所选NVIDIA驱动正常工作。
+登录进入桌面，先确认已连上网络。点击左下角“显示应用程序”图表，点击软件和更新。在软件和更新里，点开附加驱动选项卡，选中使用NVIDIA driver，点击应用更改，系统会自动下载并安装所选驱动。操作完成后重启，选中Ubuntu按回车进入系统，登录后应该就能正常进入桌面了。再次打开软件和更新里的附加驱动选项卡，并在终端执行<span style=" background-color:#e1ffff">`nvidia-settings`</span>和<span style=" background-color:#e1ffff">`nvidia-smi`</span>，以确认所选NVIDIA驱动正常工作。
 ## 安装CUDA 10.1
 在[这里](https://developer.nvidia.com/cuda-10.1-download-archive-update2?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=runfilelocal)查看如何下载并运行CUDA 10.1的runfile文件。  
 运行下载的run文件，首先在EULA页面输入accept回车，进入如下页面：  
@@ -64,14 +64,14 @@ comments: 1
 因为之前已经安装过驱动，所以我们在高亮Driver条目时按回车，取消选中驱动，如下图所示：  
 ![cuda inst 1][CUDA_INST_1]  
 然后选择Install，按回车，等待安装完成。  
-安装完成后，需要配置环境变量。终端执行`sudo gedit ~/.bashrc`，在文件末尾添加如下内容：
+安装完成后，需要配置环境变量。终端执行<span style=" background-color:#e1ffff">`sudo gedit ~/.bashrc`</span>，在文件末尾添加如下内容：
 ```shell
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export CUDA_HOME=/usr/local/cuda
 ```
-保存并退出后，在终端执行`source ~/.bashrc`以使配置生效。  
-在终端执行`cat /usr/local/cuda/version.txt`和`nvcc -V`以确认CUDA 10.1安装成功。
+保存并退出后，在终端执行<span style=" background-color:#e1ffff">`source ~/.bashrc`</span>以使配置生效。  
+在终端执行<span style=" background-color:#e1ffff">`cat /usr/local/cuda/version.txt`</span>和<span style=" background-color:#e1ffff">`nvcc -V`</span>以确认CUDA 10.1安装成功。
 ## 安装cuDNN
 点开[这里](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/#download)按照官方文档的指引下载安装即可。
 ## 安装GStreamer
@@ -80,10 +80,10 @@ export CUDA_HOME=/usr/local/cuda
 sudo apt update
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 ```
-在终端执行`dpkg -l | grep gstreamer`验证安装：![gst 0][GST_0]
+在终端执行<span style=" background-color:#e1ffff">`dpkg -l | grep gstreamer`</span>验证安装：![gst 0][GST_0]
 ## 安装TensorRT 6
 打开[这里](https://developer.nvidia.com/nvidia-tensorrt-download)下载对应Ubuntu 18.04和CUDA 10.1的TensorRT 6.0.1.5的Tar包（需登录）。我下载的是TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz。  
-把下载到的文件放到一个路径不含空格和汉字的目录里，定位到该目录（我用的目录是/home/csj430/NVIDIA/TensorRT），终端执行`tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz`。完成后执行`sudo gedit ~/.bashrc`，把`export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH`改为`export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/home/csj430/NVIDIA/TensorRT/TensorRT-6.0.1.5/lib:$LD_LIBRARY_PATH`，保存并退出。执行`source ~/.bashrc`。再执行：
+把下载到的文件放到一个路径不含空格和汉字的目录里，定位到该目录（我用的目录是/home/csj430/NVIDIA/TensorRT），终端执行<span style=" background-color:#e1ffff">`tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz`</span>。完成后执行<span style=" background-color:#e1ffff">`sudo gedit ~/.bashrc`</span>，把<span style=" background-color:#e1ffff">`export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH`</span>改为<span style=" background-color:#e1ffff">`export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/home/csj430/NVIDIA/TensorRT/TensorRT-6.0.1.5/lib:$LD_LIBRARY_PATH`</span>，保存并退出。执行<span style=" background-color:#e1ffff">`source ~/.bashrc`</span>。再执行：
 ```shell
 sudo apt install python3-pip
 cd TensorRT-6.0.1.5/python/
@@ -94,7 +94,7 @@ which convert-to-uff
 cd ../graphsurgeon
 sudo -H pip3 install graphsurgeon-0.4.1-py2.py3-none-any.whl
 ```
-若pip3下载慢或下载失败，可在`pip3 install`后加参数`-i https://pypi.tuna.tsinghua.edu.cn/simple`。  
+若pip3下载慢或下载失败，可在<span style=" background-color:#e1ffff">`pip3 install`</span>后加参数<span style=" background-color:#e1ffff">`-i https://pypi.tuna.tsinghua.edu.cn/simple`</span>。  
 ## 安装其他依赖
 执行：
 ```shell
@@ -126,7 +126,7 @@ sudo tar -xvpf binaries.tbz2 -C /
 sudo ./install.sh
 ```  
 
-现在你可以尝试运行DeepStream的demo了，在我的电脑上是执行`/opt/nvidia/deepstream/deepstream-4.0/bin/deepstream-app -c /home/csj430/NVIDIA/DeepStream/deepstream_sdk_v4.0.2_x86_64/samples/configs/deepstream-app/source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt`。
+现在你可以尝试运行DeepStream的demo了，在我的电脑上是执行<span style=" background-color:#e1ffff">`/opt/nvidia/deepstream/deepstream-4.0/bin/deepstream-app -c /home/csj430/NVIDIA/DeepStream/deepstream_sdk_v4.0.2_x86_64/samples/configs/deepstream-app/source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt`</span>。
 
 # 参考资料
 <https://blog.csdn.net/mwz1tn/article/details/86588633>  
