@@ -20,9 +20,9 @@ comments: 1
 设置好用户名和密码后执行：
 ```shell
 sudo apt update
-sudo apt upgrade
+sudo apt dist-upgrade
 ```
-如果下载很慢，建议先修改apt源。
+如果所使用的网络支持IPv6，下载慢而且不时卡住不动，可能是apt使用了IPv6，而IPv6网络状况不佳，可以尝试给apt命令添加<span style=" background-color:#e1ffff">`-o Acquire::ForceIPv4=true`</span>参数以强制其使用IPv4下载。如果使用IPv4下载还是很慢，建议先修改apt源。  
 安装Xfce：
 ```shell
 sudo apt install xfce4
@@ -31,7 +31,7 @@ sudo apt install xfce4
 ```shell
 sudo apt install xubuntu-desktop
 ```
-要安装很多组件，需要耐心等待……
+要安装很多组件，需要耐心等待……  
 然后会提示`Errors were encountered while processing: blueman`，执行：
 ```shell
 sudo dpkg-reconfigure dbus && sudo service dbus restart
@@ -61,7 +61,7 @@ xfce4-session
 start "runvcxsrv" "E:\Program Files\VcXsrv\vcxsrv.exe" :0 -clipboard -wgl -keyhook -nodecoration
 bash -c "cd /home/csj430 && export DISPLAY=localhost:0 && xfce4-session"
 ```
-确保`StartXubuntu.bat`的路径不带空格。
+确保`StartXubuntu.bat`的路径不带空格。  
 打开命令提示符执行<span style=" background-color:#e1ffff">`wsl -l`</span>，可以看到已安装的WSL。以我安装的WSL是`Ubuntu`、我的`StartXubuntu.bat`路径`E:\StartXubuntu.bat`为例，新建`Xubuntu.vbs`文件写入如下内容：
 ```
 set ws=WScript.CreateObject("WScript.Shell")
