@@ -6,7 +6,7 @@ layout: null
 
 const
     version = '{{site.time}}',
-    CACHE = '{{site.user}}' + "'s blog " + version,
+    CACHE = '{{site.title}}' + "'s blog " + version,
     offlineURL = '/offline/index.html',
     // installFilesEssential = [],
     installFilesEssential = [
