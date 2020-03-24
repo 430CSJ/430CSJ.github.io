@@ -1,8 +1,8 @@
 `use strict`;
 
 const
-    version = '{{site.time}}',
-    user = '{{site.user}}',
+    version = '{{ site.time }}',
+    user = '{{ site.user }}',
     CACHE = user + "'s blog " + version,
     offlineURL = '/offline/index.html',
     // installFilesEssential = [],
