@@ -2,7 +2,8 @@
 
 const
     version = '{{site.time}}',
-    CACHE = '{{site.user}}' + "'s blog " + version,
+    user = '{{site.user}}',
+    CACHE = user + "'s blog " + version,
     offlineURL = '/offline/index.html',
     // installFilesEssential = [],
     installFilesEssential = [
