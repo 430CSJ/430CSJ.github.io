@@ -1,0 +1,14 @@
+{
+    "name": "430CSJ's blog",
+    "short_name": "430CSJ",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#009688",
+    "theme_color": "#009688",
+    "description": "430CSJ's blog app.",
+    "icons": [{
+      "src": "assets/res/user-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }]
+}

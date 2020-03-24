@@ -39,5 +39,17 @@
     </script>
     {% endif %}
     <script src="{{site.baseurl}}/assets/js/main.js"></script>
+    <script>
+      if("/" == '{{page.url}}'){
+        if(navigator.serviceWorker != null){
+            navigator.serviceWorker.register('/assets/js/service-worker.js')
+                .then(function(registartion){
+                    console.log('Supprt sw: ',registartion.scope)
+                })
+        } else {
+            console.log('Unsupport sw')
+        }
+    }
+    </script>
   </body>
 </html>
