@@ -42,7 +42,7 @@
     <script>
       if("/" == '{{page.url}}'){
         if(navigator.serviceWorker != null){
-            navigator.serviceWorker.register('/assets/js/service-worker.js')
+            navigator.serviceWorker.register('/service-worker.js')
                 .then(function(registartion){
                     console.log('Supprt sw: ',registartion.scope)
                 })
