@@ -30,7 +30,7 @@ const
         '/assets/js/main.js',
         '/assets/js/morphext.min.js',
         '/assets/js/post.js',
-        '/assets/js/project.js',
+        '/assets/js/projects.js',
         '/assets/res/manifest.json',
         '/assets/res/user.png',
         '/assets/res/user-256x256.png',
