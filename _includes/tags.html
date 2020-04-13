@@ -32,10 +32,21 @@
     <ul class="tag-post">
       {% for post in tag[1] %}
       {% unless post.hidden %}
-      <a class="post-title" href="{{site.baseurl}}{{post.url}}" target="_blank">
+      <a class="post-title" href="{{site.baseurl}}{{post.url}}">
         <li>
           {{post.title}}
-          <small class="post-date">{{post.date | date_to_string}}</small>
+          <small class="post-date">
+            <noscript>{{post.date | date_to_string}}</noscript>
+            <script>
+              var pdate = new Date('{{post.date}}');
+              var y = pdate.getFullYear();
+              var m = pdate.getMonth() + 1;
+              m = m < 10 ? '0' + m : m;
+              var d = pdate.getDate();
+              d = d < 10 ? ('0' + d) : d;
+              document.write(m + '-' + d + ' ' + y);
+            </script>
+          </small>
         </li>
       </a>
       {% endunless %}
