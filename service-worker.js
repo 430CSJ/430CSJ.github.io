@@ -11,7 +11,6 @@ const
     // installFilesEssential = [],
     installFilesEssential = [
         '/',
-        '/offline/index.html',
         '/assets/css/about.css',
         '/assets/css/animate.css',
         '/assets/css/categories.css',

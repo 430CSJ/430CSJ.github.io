@@ -34,7 +34,7 @@ contact_url: "https://www.wenjuan.com/s/FvauMbe/"
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
